@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "modutils",
+  "version": "${version}",
+
+  "name": "Mod Utils",
+  "description": "Various utilities for mods. Including a configuration handler, a file watcher, etc.",
+
+  "authors": [
+    "case_walker"
+  ],
+  "contact": {
+    "homepage": "https://github.com/casewalker"
+  },
+
+  "license": "MIT",
+  "icon": "assets/modutils/icon.png",
+
+  "environment": "client",
+  "entrypoints": {
+    "main": [
+      "com.casewalker.modutils.DummyModInitializer"
+    ]
+  },
+  "mixins": [
+    "modutils.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.11.3",
+    "fabric": "*",
+    "minecraft": "1.17.x",
+    "java": ">=16"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

@@ -1,0 +1,11 @@
+modEnabled: yes
+chatEnabled: yes
+enabledPrefixes:
+  - multiplayer.player.
+  - commands.message.display.
+  - chat.type.advancement.
+  - death.
+  - sleep.
+enabledRegularExpressions:
+  - "^\\d+, \\d+, \\d+$"
+  - "Just adding a small difference so the JSON and YAML tests are not identical"

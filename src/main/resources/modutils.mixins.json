@@ -1,0 +1,10 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.casewalker.modutils.mixin",
+  "compatibilityLevel": "JAVA_16",
+  "client": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
