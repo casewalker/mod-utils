@@ -4,6 +4,7 @@
 build/
 out/
 classes/
+logs/
 
 # eclipse
 
@@ -31,4 +32,3 @@ bin/
 # fabric
 
 run/
-logs/
