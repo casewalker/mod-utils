@@ -91,6 +91,17 @@ public class MyClass implements Reloadable {
 }
 ```
 
+## Gradle
+
+Use it in your mod! In gradle:
+```groovy
+	modImplementation "com.casewalker:mod-utils:<VERSION>"
+```
+Or to include it inside the JAR file:
+```groovy
+	include(modImplementation("com.casewalker:mod-utils:<VERSION>"))
+```
+
 ## License
 
 Licensed under the MIT License (MIT). Copyright © 2021 Case Walker.
