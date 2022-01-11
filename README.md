@@ -1,7 +1,7 @@
 # Mod Utils
 
 This repository will hold custom utilities useful in Minecraft modding (built on top of 
-[Fabric|https://fabricmc.net/]). Currently, it contains:
+[Fabric](https://fabricmc.net/)). Currently, it contains:
 
 * A watch service to detect changes to a given file
 * A configuration handler which can hot-reload from a configuration file
