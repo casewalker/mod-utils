@@ -1,7 +1,6 @@
 # Mod Utils
 
-This repository will hold custom utilities useful in Minecraft modding (built on top of 
-[Fabric](https://fabricmc.net/)). Currently, it contains:
+This repository will hold custom utilities useful in Minecraft modding. Currently, it contains:
 
 * A watch service to detect changes to a given file
 * A configuration handler which can hot-reload from a configuration file
@@ -22,11 +21,11 @@ This configuration handler allows users to:
 To use this code for handling configurations in a mod:
 
 #### Create a Concrete Configuration Class
+
 1. Create a java-bean style public class with private instance variables for your configurations
 2. Extend `AbstractConfig`
 3. Add getters and setters for each configuration
 4. Implement the methods `getDefaultConfigPaths` and `equals`
-
 
 ```java
 public class MyModConfig extends AbstractConfig {
@@ -71,6 +70,7 @@ public class MyModConfig extends AbstractConfig {
     }
 }
 ```
+
 #### Use the ConfigHandler
 
 1. Create an instance of `ConfigHandler` using your configuration class as the parameter
@@ -175,4 +175,4 @@ Or to include it inside the JAR file:
 
 ## License
 
-Licensed under the MIT License (MIT). Copyright © 2021 Case Walker.
+Licensed under the MIT License (MIT). Copyright © 2022 Case Walker.
