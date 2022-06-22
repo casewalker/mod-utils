@@ -61,6 +61,7 @@ import java.util.List;
  *
  *       private final static NarratorModeMixinHelper HELPER = new NarratorModeMixinHelper();
  *
+ *       // Custom NarratorModes go here:
  *       private static final NarratorMode EXAMPLE1 =
  *               addNarratorMode("EXAMPLE1", 4, "options.narrator.example1");
  *       private static final NarratorMode EXAMPLE2 =

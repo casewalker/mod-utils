@@ -4,6 +4,9 @@ This repository will hold custom utilities useful in Minecraft modding. Currentl
 
 * A watch service to detect changes to a given file
 * A configuration handler which can hot-reload from a configuration file
+* A parent class that can be used to implement a mixin on the `NarratorMode` enum
+
+Note that this mod is built on top of [Fabric](https://fabricmc.net/).
 
 ### Configuration Handling
 
@@ -90,6 +93,73 @@ public class MyClass implements Reloadable {
     ...
 }
 ```
+
+### NarratorModeMixin Support
+
+The `NarratorMode` enum defines what narration modes Minecraft offers through the _Accessibility Settings_ options.
+Creating a mixin on the enum can allow a mod to define new narration modes.
+
+Given this mod, another mod would need to write the following class definition:
+```java
+@Mixin(NarratorMode.class)
+@Unique
+public abstract class MyNarratorModeMixin {
+
+    private static class NarratorModeMixinHelper extends NarratorModeMixinHelperParent {
+        @Override
+        public NarratorMode narratorModeInvokeInit(
+                final String internalName,
+                final int internalId,
+                final int id,
+                final String name) {
+            return MyNarratorModeMixin.narratorModeInvokeInit(internalName, internalId, id, name);
+        }
+    }
+
+    @Shadow
+    @Final
+    @Mutable
+    private static NarratorMode[] field_18183;
+
+    @Shadow
+    @Final
+    @Mutable
+    private static NarratorMode[] VALUES;
+
+    private final static NarratorModeMixinHelper HELPER = new NarratorModeMixinHelper();
+
+    // Custom NarratorModes go here:
+    private static final NarratorMode EXAMPLE1 = 
+            addNarratorMode("EXAMPLE1", 4, "options.narrator.example1");
+    private static final NarratorMode EXAMPLE2 = 
+            addNarratorMode("EXAMPLE2", 5, "options.narrator.example2");
+    [...]
+
+    @Invoker("<init>")
+    public static NarratorMode narratorModeInvokeInit(
+            final String internalName,
+            final int internalId,
+            final int id,
+            final String name) {
+        throw new AssertionError();
+    }
+
+    private static NarratorMode addNarratorMode(final String internalName, final int id, final String name) {
+        final Object[] output = HELPER.addNarratorMode(VALUES, field_18183, internalName, id, name);
+
+        VALUES      = (NarratorMode[]) output[0];
+        field_18183 = (NarratorMode[]) output[1];
+        return        (NarratorMode)   output[2];
+    }
+}
+```
+There is still a fair amount of boilerplate required by the implementer, but it can be almost entirely copy-pasted and
+the most finicky logic is safely tucked away in the parent class.
+
+Note that the Fabric framework does not allow the new `NarratorMode`(s) to be made easily accessible by being defined
+as `public`. Also, and more annoyingly, the `id` does not necessarily match the ordinal or work with the
+`NarratorMode.byId(int)` method, unfortunately, so the implementer must be very careful in accessing the new modes,
+especially if they may be in an environment with multiple `NarratorMode` mixins.
 
 ## Gradle
 
