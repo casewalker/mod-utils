@@ -71,7 +71,7 @@ class NarratorModeMixinTest {
         NarratorMode[] newVALUES = (NarratorMode[]) returned[0];
         NarratorMode[] new_field_18183 = (NarratorMode[]) returned[1];
         NarratorMode newMode = (NarratorMode) returned[2];
-        assertEquals(name, newMode.getName().asString(), "Name (Text) should match");
+        assertEquals(name, newMode.getName().getString(), "Name (Text) should match");
         assertEquals(id, newMode.getId(), "ID should match");
         assertEquals(internalName, newMode.name(), "Internal name should match");
         assertEquals(field_18183[field_18183.length - 1].ordinal() + 1, newMode.ordinal(),

@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '0.10-SNAPSHOT'
+	id 'fabric-loom' version '0.12-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -31,7 +31,7 @@ dependencies {
 	include(modImplementation("org.yaml:snakeyaml:${project.snake_yaml_version}"))
 
 	testImplementation "org.junit.jupiter:junit-jupiter:${project.junit_jupiter_version}"
-	testImplementation"org.mockito:mockito-core:${project.org_mockito_mockito_core_version}"
+	testImplementation "org.mockito:mockito-core:${project.org_mockito_mockito_core_version}"
 	testImplementation "org.powermock:powermock-core:${project.powermock_powermock_version}"
 }
 
@@ -63,7 +63,7 @@ java {
 
 jar {
 	from("LICENSE") {
-		rename { "${it}_${project.archivesBaseName}"}
+		rename {"${it}_${project.archivesBaseName}"}
 	}
 }
 
